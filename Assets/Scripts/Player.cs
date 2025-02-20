@@ -5,11 +5,14 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private InputManager inputManager;
     [SerializeField] private CinemachineCamera playerCamera;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float speed;
     [SerializeField] private float maxSpeed;
     [Tooltip("How much the player can control their movement in the air as a fraction of their ground control.")]
     [SerializeField] private float airControlStrength;
     [SerializeField] private float jumpStrength;
+    private float groundCheckRadius = 0.6f;
 
     private Rigidbody rb;
     void Start()
@@ -54,6 +57,7 @@ public class Player : MonoBehaviour
     }
     private bool IsGrounded()
     {
-        return Physics.Raycast(transform.position + Vector3.up * 0.1f, Vector3.down, 0.3f);
+        return Physics.CheckSphere(groundCheck.position, groundCheckRadius, LayerMask.GetMask("Ground"));
+        // return Physics.Raycast(transform.position + Vector3.up * 0.1f, Vector3.down, 0.3f);
     }
 }
