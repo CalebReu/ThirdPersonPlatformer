@@ -30,6 +30,14 @@ public class Player : MonoBehaviour
     {
         Vector3 moveDirection = new Vector3(direction.x, 0f, direction.y);
         moveDirection = transform.TransformDirection(moveDirection);
+
+        RaycastHit hit;
+        if (Physics.Raycast(groundCheck.position, Vector3.down, out hit, groundCheckRadius, groundLayer))
+        {
+            Vector3 groundNormal = hit.normal;
+            moveDirection = Vector3.ProjectOnPlane(moveDirection, groundNormal);
+        }
+
         // if moving at max speed, set the component of moveDirection in the direction of movement to zero
         Vector3 velocity = rb.linearVelocity;
         velocity.y = 0f;
