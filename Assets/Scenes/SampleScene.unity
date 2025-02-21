@@ -680,7 +680,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b6f82f9fece71c4282e7fca8dcb8367, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCamera: {fileID: 330585546}
   OnMove:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTurn:
     m_PersistentCalls:
       m_Calls: []
   OnSpacePressed:
@@ -940,7 +944,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputManager: {fileID: 367949672}
-  playerCamera: {fileID: 2146662036}
   groundCheck: {fileID: 579991397}
   groundLayer:
     serializedVersion: 2

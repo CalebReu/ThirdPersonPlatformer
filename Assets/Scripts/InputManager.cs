@@ -3,7 +3,9 @@ using UnityEngine.Events;
 
 public class InputManager : MonoBehaviour
 {
+    [SerializeField] private Transform playerCamera;
     public UnityEvent<Vector2> OnMove = new();
+    public UnityEvent<Vector3> OnTurn = new();
     public UnityEvent OnSpacePressed = new();
     public UnityEvent OnResetPressed = new();
 
@@ -33,9 +35,7 @@ public class InputManager : MonoBehaviour
         }
         OnMove?.Invoke(input);
 
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            OnResetPressed?.Invoke();
-        }
+        Vector3 direction = playerCamera.transform.forward;
+        OnTurn?.Invoke(direction);
     }
 }

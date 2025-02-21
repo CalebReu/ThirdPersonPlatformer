@@ -4,7 +4,7 @@ using Unity.Cinemachine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private InputManager inputManager;
-    [SerializeField] private CinemachineCamera playerCamera;
+
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float speed;
@@ -20,12 +20,11 @@ public class Player : MonoBehaviour
     {
         inputManager.OnMove.AddListener(MovePlayer);
         inputManager.OnSpacePressed.AddListener(Jump);
+        inputManager.OnTurn.AddListener(RotatePlayer);
         rb = GetComponent<Rigidbody>();
     }
     void Update()
     {
-        transform.forward = playerCamera.transform.forward;
-        transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
         if (IsGrounded())
         {
             Vector3 oppositeForce = -rb.linearVelocity;
@@ -69,6 +68,12 @@ public class Player : MonoBehaviour
         {
             rb.AddForce(Vector3.up * jumpStrength, ForceMode.Impulse);
         }
+    }
+    private void RotatePlayer(Vector3 direction)
+    {
+        direction.y = 0f;
+        transform.forward = direction.normalized;
+        transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
     }
     private bool IsGrounded()
     {
