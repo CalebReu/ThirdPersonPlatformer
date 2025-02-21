@@ -47,6 +47,7 @@ public class Player : MonoBehaviour
             moveDirection -= Vector3.Project(moveDirection, velocityDirection);
         }
 
+        Debug.Log("Move Direction: " + moveDirection);
         if (IsGrounded())
         {
             rb.AddForce(speed * moveDirection.normalized);
