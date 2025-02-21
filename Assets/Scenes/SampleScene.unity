@@ -739,9 +739,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   speed: 10
-  maxSpeed: 15
+  maxSpeed: 10
   airControlStrength: 0.1
-  jumpStrength: 13
+  jumpStrength: 10
+  friction: 4
 --- !u!54 &547790808
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -776,7 +777,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 547790805}
-  m_Material: {fileID: 13400000, guid: a31e93ed5101ab04895ab58b8dcaa594, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1227,7 +1228,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7820048585309106869, guid: e28702de6b0ac264db239cad23c165bd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.94
+      value: 10.62
       objectReference: {fileID: 0}
     - target: {fileID: 7820048585309106869, guid: e28702de6b0ac264db239cad23c165bd, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1235,7 +1236,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7820048585309106869, guid: e28702de6b0ac264db239cad23c165bd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -54.59
+      value: -47.7
       objectReference: {fileID: 0}
     - target: {fileID: 7820048585309106869, guid: e28702de6b0ac264db239cad23c165bd, type: 3}
       propertyPath: m_LocalRotation.w

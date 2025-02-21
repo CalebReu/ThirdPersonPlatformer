@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     [Tooltip("How much the player can control their movement in the air as a fraction of their ground control.")]
     [SerializeField] private float airControlStrength;
     [SerializeField] private float jumpStrength;
+    [SerializeField] private float friction;
     private float groundCheckRadius = 0.6f;
 
     private Rigidbody rb;
@@ -25,6 +26,11 @@ public class Player : MonoBehaviour
     {
         transform.forward = playerCamera.transform.forward;
         transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
+        if (IsGrounded())
+        {
+            Vector3 oppositeForce = -rb.linearVelocity;
+            rb.AddForce(oppositeForce.normalized * friction);
+        }
     }
     private void MovePlayer(Vector2 direction)
     {
