@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     {
         score = 0;
         scoreText.text = "Score: " + score;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
     public void AddScore(int value)
     {
