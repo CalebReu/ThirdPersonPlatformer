@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float airControlStrength;
     [SerializeField] private float jumpStrength;
     [SerializeField] private float friction;
-    private float groundCheckRadius = 0.6f;
+    private float groundCheckRadius = 0.45f;
 
     private Rigidbody rb;
     void Start()
